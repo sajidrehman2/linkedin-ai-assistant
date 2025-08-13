@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>LinkedIn Draft with AI</title>
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 12px; width: 320px; }
+      button { padding: 10px 12px; border-radius: 10px; border: none; background: #0a66c2; color: white; font-weight: 600; cursor: pointer; }
+      button:hover { filter: brightness(1.05); }
+      input { width: 100%; padding: 8px; margin-top: 8px; }
+      small { color: #666; }
+    </style>
+  </head>
+  <body>
+    <h3>LinkedIn Draft with AI</h3>
+    <p>Click the button to draft a reply for the current tab. Backend must be running on <code>http://localhost:8000</code>.</p>
+    <label>Backend URL</label>
+    <input id="backend" value="http://localhost:8000" />
+    <br/><br/>
+    <button id="draft">Draft with AI</button>
+    <p><small>Note: This only inserts text. You must click Send.</small></p>
+    <script src="popup.js"></script>
+  </body>
+</html>
