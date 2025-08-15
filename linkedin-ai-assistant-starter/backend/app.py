@@ -16,11 +16,20 @@ app = FastAPI(title="LinkedIn AI Assistant (Local)")
 # CORS for Streamlit and Chrome extension
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8501", "http://127.0.0.1:8501", "chrome-extension://*","http://localhost:3000","http://localhost:5173"],
+    allow_origins=[
+        "http://localhost:8501",
+        "http://127.0.0.1:8501",
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "chrome-extension://*",
+        "https://linkedin-ai-assistant.onrender.com",
+        "https://preview--data-visions-portfolio.lovable.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 class SuggestRequest(BaseModel):
     conversation: str = Field(..., description="Conversation text or last message")
