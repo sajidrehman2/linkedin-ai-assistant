@@ -27,21 +27,25 @@ if submitted:
         st.error("Please paste some conversation text.")
     else:
         try:
-          esp = requests.post(
-    f"{backend_url}/suggest_reply",
-    json={
-        "conversation": conversation,
-        "tone": tone,
-        "language": language,
-        "max_words": max_words
-    },
-    timeout=120  # increased from 60 to 120 seconds
-)
+            resp = requests.post(
+                f"{backend_url}/suggest_reply",
+                json={
+                    "conversation": conversation,
+                    "tone": tone,
+                    "language": language,
+                    "max_words": max_words
+                },
+                timeout=120  # increased timeout
+            )
+
             if resp.ok:
                 reply = resp.json().get("reply_text", "")
                 st.text_area("Draft Reply", value=reply, height=180)
                 st.button("Copy to clipboard", on_click=lambda: st.write("Use your OS copy shortcut (Ctrl/Cmd+C)."))
             else:
                 st.error(f"Error: {resp.status_code} - {resp.text}")
+
+        except requests.exceptions.ReadTimeout:
+            st.error("Request timed out. The backend may be waking up. Please try again in a few seconds.")
         except Exception as e:
             st.error(f"Request failed: {e}")
