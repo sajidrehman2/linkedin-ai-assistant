@@ -5,8 +5,11 @@ st.set_page_config(page_title="LinkedIn AI Assistant", page_icon="🤖")
 
 st.title("LinkedIn AI Assistant (Local)")
 st.caption("Paste conversation, pick a tone, generate a human-quality draft. No auto-sending.")
+backend_url = st.text_input(
+    "Backend URL",
+    value="https://linkedin-ai-assistant-backend.onrender.com"
+)
 
-backend_url = st.text_input("Backend URL", value="http://localhost:8000")
 
 with st.form("gen_form"):
     conversation = st.text_area("Paste conversation or last message", height=240, help="Copy from LinkedIn and paste here.")
