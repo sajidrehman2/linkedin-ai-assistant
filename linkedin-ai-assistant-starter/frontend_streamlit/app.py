@@ -10,7 +10,6 @@ backend_url = st.text_input(
     value="https://linkedin-ai-assistant-backend.onrender.com"
 )
 
-
 with st.form("gen_form"):
     conversation = st.text_area("Paste conversation or last message", height=240, help="Copy from LinkedIn and paste here.")
     col1, col2, col3 = st.columns(3)
