@@ -55,7 +55,8 @@ if submitted:
                     },
                     timeout=120
                 )
-
+            
+            # CORRECTED INDENTATION LEVEL
             if resp.ok:
                 reply = resp.json().get("reply_text", "")
                 st.text_area("Draft Reply", value=reply, height=180)
