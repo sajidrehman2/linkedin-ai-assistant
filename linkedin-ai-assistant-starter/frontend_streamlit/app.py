@@ -27,12 +27,16 @@ if submitted:
         st.error("Please paste some conversation text.")
     else:
         try:
-            resp = requests.post(f"{backend_url}/suggest_reply", json={
-                "conversation": conversation,
-                "tone": tone,
-                "language": language,
-                "max_words": max_words
-            }, timeout=60)
+          esp = requests.post(
+    f"{backend_url}/suggest_reply",
+    json={
+        "conversation": conversation,
+        "tone": tone,
+        "language": language,
+        "max_words": max_words
+    },
+    timeout=120  # increased from 60 to 120 seconds
+)
             if resp.ok:
                 reply = resp.json().get("reply_text", "")
                 st.text_area("Draft Reply", value=reply, height=180)
